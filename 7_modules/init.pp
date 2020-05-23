@@ -1,3 +1,4 @@
+class nginx{
 exec { 'apt-update':                    # exec resource named 'apt-update'
   command => '/usr/bin/apt-get update'  # command this resource will run
 }
@@ -9,6 +10,7 @@ package { 'nginx':
 }
 service { 'nginx':
   require => Exec['apt-update'],       # require 'apt-update' before installing
-  ensure => started,
+  ensure => running,
+  enable => true,	
 }
-
+}

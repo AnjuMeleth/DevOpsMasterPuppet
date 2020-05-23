@@ -8,11 +8,6 @@ file {'/home/devops/':
 package{'docker.io':
  ensure => present
 }
-exec {'Docker-build':
-cwd => '/home/ubuntu/workspace/spring_petclinic',
-command => '/usr/bin/docker build . -t anjurose/puppetapp'
-}
 exec {'Docker-run':
- cwd => '/home/ubuntu/workspace/spring_petclinic',
  command => '/usr/bin/docker run -it -d -p 8083:8080 anjurose/puppetapp'
 }
